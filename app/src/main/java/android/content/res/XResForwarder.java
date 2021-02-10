@@ -8,9 +8,6 @@ package android.content.res;
  * <p>Usually, instances aren't created directly but via {@link XModuleResources#fwd}.
  */
 public class XResForwarder {
-	private final Resources res;
-	private final int id;
-
 	/**
 	 * Creates a new instance.
 	 *
@@ -18,17 +15,16 @@ public class XResForwarder {
 	 * @param id The target resource ID.
 	 */
 	public XResForwarder(Resources res, int id) {
-		this.res = res;
-		this.id = id;
+		throw new UnsupportedOperationException("STUB");
 	}
 
 	/** Returns the target {@link android.content.res.Resources} instance. */
 	public Resources getResources() {
-		return res;
+		throw new UnsupportedOperationException("STUB");
 	}
 
 	/** Returns the target resource ID. */
 	public int getId() {
-		return id;
+		throw new UnsupportedOperationException("STUB");
 	}
 }

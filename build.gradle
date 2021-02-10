@@ -13,9 +13,6 @@ allprojects {
         google()
         jcenter()
     }
-    ext {
-        hiddenApiStubJarFilePath = project(":hiddenapistubs").buildDir.absolutePath + "/libs/framework-stub.jar"
-    }
 }
 
 task clean(type: Delete) {

@@ -1,20 +1,32 @@
 package android.content.res;
 
-import android.app.AndroidAppHelper;
+import android.content.Context;
 import android.util.DisplayMetrics;
 
 import de.robv.android.xposed.IXposedHookInitPackageResources;
 import de.robv.android.xposed.IXposedHookZygoteInit;
 import de.robv.android.xposed.IXposedHookZygoteInit.StartupParam;
-import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResourcesParam;
 
 /**
  * Provides access to resources from a certain path (usually the module's own path).
  */
+@SuppressWarnings({"unused", "RedundantSuppression"})
 public class XModuleResources extends Resources {
-	private XModuleResources(AssetManager assets, DisplayMetrics metrics, Configuration config) {
+	/**
+	 * Create a new Resources object on top of an existing set of assets in an
+	 * AssetManager.
+	 *
+	 * @param assets  Previously created AssetManager.
+	 * @param metrics Current display metrics to consider when
+	 *                selecting/computing resource values.
+	 * @param config  Desired device configuration to consider when
+	 * @deprecated Resources should not be constructed by apps.
+	 * See {@link Context#createConfigurationContext(Configuration)}.
+	 */
+	public XModuleResources(AssetManager assets, DisplayMetrics metrics, Configuration config) {
 		super(assets, metrics, config);
+		throw new UnsupportedOperationException("STUB");
 	}
 
 	/**
@@ -30,26 +42,13 @@ public class XModuleResources extends Resources {
 	 *                configuration should be copied. May be {@code null}.
 	 */
 	public static XModuleResources createInstance(String path, XResources origRes) {
-		if (path == null)
-			throw new IllegalArgumentException("path must not be null");
-
-		AssetManager assets = new AssetManager();
-		XposedHelpers.callMethod(assets, "addAssetPath", path);
-
-		XModuleResources res;
-		if (origRes != null)
-			res = new XModuleResources(assets, origRes.getDisplayMetrics(),	origRes.getConfiguration());
-		else
-			res = new XModuleResources(assets, null, null);
-
-		AndroidAppHelper.addActiveResource(path, res);
-		return res;
+		throw new UnsupportedOperationException("STUB");
 	}
 
 	/**
 	 * Creates an {@link XResForwarder} instance that forwards requests to {@code id} in this resource.
 	 */
 	public XResForwarder fwd(int id) {
-		return new XResForwarder(this, id);
+		throw new UnsupportedOperationException("STUB");
 	}
 }

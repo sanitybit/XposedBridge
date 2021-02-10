@@ -20,6 +20,7 @@ public interface IXposedHookZygoteInit extends IXposedMod {
 	void initZygote(StartupParam startupParam) throws Throwable;
 
 	/** Data holder for {@link #initZygote}. */
+	@SuppressWarnings({"unused", "RedundantSuppression"})
 	final class StartupParam {
 		/*package*/ StartupParam() {}
 

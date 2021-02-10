@@ -5,6 +5,7 @@ import de.robv.android.xposed.callbacks.XCallback;
 /**
  * A special case of {@link XC_MethodHook} which completely replaces the original method.
  */
+@SuppressWarnings({"RedundantThrows", "JavaDoc"})
 public abstract class XC_MethodReplacement extends XC_MethodHook {
 	/**
 	 * Creates a new callback with default priority.

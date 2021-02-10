@@ -23,6 +23,7 @@ public interface IXposedHookInitPackageResources extends IXposedMod {
 	void handleInitPackageResources(InitPackageResourcesParam resparam) throws Throwable;
 
 	/** @hide */
+	@SuppressWarnings({"JavaDoc", "FieldCanBeLocal", "unused", "RedundantSuppression"})
 	final class Wrapper extends XC_InitPackageResources {
 		private final IXposedHookInitPackageResources instance;
 		public Wrapper(IXposedHookInitPackageResources instance) {
@@ -30,7 +31,7 @@ public interface IXposedHookInitPackageResources extends IXposedMod {
 		}
 		@Override
 		public void handleInitPackageResources(InitPackageResourcesParam resparam) throws Throwable {
-			instance.handleInitPackageResources(resparam);
+			throw new UnsupportedOperationException("STUB");
 		}
 	}
 }

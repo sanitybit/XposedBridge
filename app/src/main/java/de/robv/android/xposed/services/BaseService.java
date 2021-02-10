@@ -1,7 +1,5 @@
 package de.robv.android.xposed.services;
 
-import java.io.ByteArrayInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -12,6 +10,7 @@ import de.robv.android.xposed.SELinuxHelper;
  *
  * <p>References to a concrete subclass should generally be retrieved from {@link SELinuxHelper}.
  */
+@SuppressWarnings({"unused", "RedundantSuppression", "RedundantThrows"})
 public abstract class BaseService {
 	/** Flag for {@link #checkFileAccess}: Read access. */
 	public static final int R_OK = 4;
@@ -48,7 +47,7 @@ public abstract class BaseService {
 	 */
 	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 	public boolean checkFileExists(String filename) {
-		return checkFileAccess(filename, F_OK);
+		throw new UnsupportedOperationException("STUB");
 	}
 
 	/**
@@ -68,7 +67,7 @@ public abstract class BaseService {
 	 * @throws IOException In case an error occurred while retrieving the information.
 	 */
 	public long getFileSize(String filename) throws IOException {
-		return statFile(filename).size;
+		throw new UnsupportedOperationException("STUB");
 	}
 
 	/**
@@ -79,7 +78,7 @@ public abstract class BaseService {
 	 * @throws IOException In case an error occurred while retrieving the information.
 	 */
 	public long getFileModificationTime(String filename) throws IOException {
-		return statFile(filename).mtime;
+		throw new UnsupportedOperationException("STUB");
 	}
 
 	/**
@@ -129,7 +128,7 @@ public abstract class BaseService {
 	 * @throws IOException In case an error occurred while reading the file.
 	 */
 	public InputStream getFileInputStream(String filename) throws IOException {
-		return new ByteArrayInputStream(readFile(filename));
+		throw new UnsupportedOperationException("STUB");
 	}
 
 	/**
@@ -145,35 +144,6 @@ public abstract class BaseService {
 	 * @throws IOException In case an error occurred while reading the file.
 	 */
 	public FileResult getFileInputStream(String filename, long previousSize, long previousTime) throws IOException {
-		FileResult result = readFile(filename, previousSize, previousTime);
-		if (result.content == null)
-			return result;
-		return new FileResult(new ByteArrayInputStream(result.content), result.size, result.mtime);
-	}
-
-
-	// ----------------------------------------------------------------------------
-	/*package*/ BaseService() {}
-
-	/*package*/ static void ensureAbsolutePath(String filename) {
-		if (!filename.startsWith("/")) {
-			throw new IllegalArgumentException("Only absolute filenames are allowed: " + filename);
-		}
-	}
-
-	/*package*/ static void throwCommonIOException(int errno, String errorMsg, String filename, String defaultText) throws IOException {
-		switch (errno) {
-			case 1: // EPERM
-			case 13: // EACCES
-				throw new FileNotFoundException(errorMsg != null ? errorMsg : "Permission denied: " + filename);
-			case 2: // ENOENT
-				throw new FileNotFoundException(errorMsg != null ? errorMsg : "No such file or directory: " + filename);
-			case 12: // ENOMEM
-				throw new OutOfMemoryError(errorMsg);
-			case 21: // EISDIR
-				throw new FileNotFoundException(errorMsg != null ? errorMsg : "Is a directory: " + filename);
-			default:
-				throw new IOException(errorMsg != null ? errorMsg : "Error " + errno + defaultText + filename);
-		}
+		throw new UnsupportedOperationException("STUB");
 	}
 }

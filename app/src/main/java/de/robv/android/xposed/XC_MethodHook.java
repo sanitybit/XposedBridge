@@ -11,6 +11,7 @@ import de.robv.android.xposed.callbacks.XCallback;
  * <p>Usually, anonymous subclasses of this class are created which override
  * {@link #beforeHookedMethod} and/or {@link #afterHookedMethod}.
  */
+@SuppressWarnings({"unused", "RedundantSuppression"})
 public abstract class XC_MethodHook extends XCallback {
 	/**
 	 * Creates a new callback with default priority.
@@ -31,7 +32,7 @@ public abstract class XC_MethodHook extends XCallback {
 	 * @param priority See {@link XCallback#priority}.
 	 */
 	public XC_MethodHook(int priority) {
-		super(priority);
+		throw new UnsupportedOperationException("STUB");
 	}
 
 	/**
@@ -63,6 +64,7 @@ public abstract class XC_MethodHook extends XCallback {
 	/**
 	 * Wraps information about the method call and allows to influence it.
 	 */
+	@SuppressWarnings("JavaDoc")
 	public static final class MethodHookParam extends XCallback.Param {
 		/** @hide */
 		@SuppressWarnings("deprecation")

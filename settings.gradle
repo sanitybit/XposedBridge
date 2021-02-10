@@ -1,1 +1,1 @@
-include ':hiddenapistubs', ':app'
+include ':app'

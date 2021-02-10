@@ -7,6 +7,7 @@ package de.robv.android.xposed;
  * @hide Xposed no longer hooks command-line tools, therefore this interface shouldn't be
  * implemented anymore.
  */
+@SuppressWarnings("JavaDoc")
 public interface IXposedHookCmdInit extends IXposedMod {
 	/**
 	 * Called very early during startup of a command-line tool.

@@ -28,11 +28,6 @@ android {
     }
 }
 
-dependencies {
-    compileOnly project(":hiddenapistubs")
-}
-
-
 
 //apply plugin: 'com.android.application'
 //

@@ -1,15 +1,11 @@
 package de.robv.android.xposed;
 
-import android.os.SELinux;
-
 import de.robv.android.xposed.services.BaseService;
-import de.robv.android.xposed.services.BinderService;
-import de.robv.android.xposed.services.DirectAccessService;
-import de.robv.android.xposed.services.ZygoteService;
 
 /**
  * A helper to work with (or without) SELinux, abstracting much of its big complexity.
  */
+@SuppressWarnings({"unused", "RedundantSuppression"})
 public final class SELinuxHelper {
 	private SELinuxHelper() {}
 
@@ -19,7 +15,7 @@ public final class SELinuxHelper {
 	 * @return A boolean indicating whether SELinux is enabled.
 	 */
 	public static boolean isSELinuxEnabled() {
-		return sIsSELinuxEnabled;
+		throw new UnsupportedOperationException("STUB");
 	}
 
 	/**
@@ -28,7 +24,7 @@ public final class SELinuxHelper {
 	 * @return A boolean indicating whether SELinux is enforcing.
 	*/
 	public static boolean isSELinuxEnforced() {
-		return sIsSELinuxEnabled && SELinux.isSELinuxEnforced();
+		throw new UnsupportedOperationException("STUB");
 	}
 
 	/**
@@ -37,7 +33,7 @@ public final class SELinuxHelper {
 	 * @return A String representing the security context of the current process.
 	 */
 	public static String getContext() {
-		return sIsSELinuxEnabled ? SELinux.getContext() : null;
+		throw new UnsupportedOperationException("STUB");
 	}
 
 	/**
@@ -49,33 +45,6 @@ public final class SELinuxHelper {
 	 * @return An instance of the service.
 	 */
 	public static BaseService getAppDataFileService() {
-		if (sServiceAppDataFile != null)
-			return sServiceAppDataFile;
-		throw new UnsupportedOperationException();
-	}
-
-
-	// ----------------------------------------------------------------------------
-	private static boolean sIsSELinuxEnabled = false;
-	private static BaseService sServiceAppDataFile = null;
-
-	/*package*/ static void initOnce() {
-		try {
-			sIsSELinuxEnabled = SELinux.isSELinuxEnabled();
-		} catch (NoClassDefFoundError ignored) {}
-	}
-
-	/*package*/ static void initForProcess(String packageName) {
-		if (sIsSELinuxEnabled) {
-			if (packageName == null) {  // Zygote
-				sServiceAppDataFile = new ZygoteService();
-			} else if (packageName.equals("android")) {  //system_server
-				sServiceAppDataFile = BinderService.getService(BinderService.TARGET_APP);
-			} else {  // app
-				sServiceAppDataFile = new DirectAccessService();
-			}
-		} else {
-			sServiceAppDataFile = new DirectAccessService();
-		}
+		throw new UnsupportedOperationException("STUB");
 	}
 }

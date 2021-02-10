@@ -4,8 +4,6 @@ import android.content.res.XResources;
 import android.content.res.XResources.ResourceNames;
 import android.view.View;
 
-import de.robv.android.xposed.XposedBridge.CopyOnWriteSortedSet;
-
 /**
  * Callback for hooking layouts. Such callbacks can be passed to {@link XResources#hookLayout}
  * and its variants.
@@ -25,18 +23,13 @@ public abstract class XC_LayoutInflated extends XCallback {
 	 * @param priority See {@link XCallback#priority}.
 	 */
 	public XC_LayoutInflated(int priority) {
-		super(priority);
+		throw new UnsupportedOperationException("STUB");
 	}
 
 	/**
 	 * Wraps information about the inflated layout.
 	 */
 	public static final class LayoutInflatedParam extends XCallback.Param {
-		/** @hide */
-		public LayoutInflatedParam(CopyOnWriteSortedSet<XC_LayoutInflated> callbacks) {
-			super(callbacks);
-		}
-
 		/** The view that has been created from the layout. */
 		public View view;
 
@@ -48,13 +41,6 @@ public abstract class XC_LayoutInflated extends XCallback {
 
 		/** Resources containing the layout. */
 		public XResources res;
-	}
-
-	/** @hide */
-	@Override
-	protected void call(Param param) throws Throwable {
-		if (param instanceof LayoutInflatedParam)
-			handleLayoutInflated((LayoutInflatedParam) param);
 	}
 
 	/**
