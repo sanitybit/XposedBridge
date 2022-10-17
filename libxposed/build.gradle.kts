@@ -5,11 +5,11 @@ plugins {
 val apiCode: Int by rootProject.extra
 
 android {
-    compileSdk = 31
-    buildToolsVersion = "31.0.0"
+    compileSdk = 33
+    buildToolsVersion = "33.0.3"
 
     defaultConfig {
-        minSdk = 15
+        minSdk = 30
     }
 
     buildTypes {
